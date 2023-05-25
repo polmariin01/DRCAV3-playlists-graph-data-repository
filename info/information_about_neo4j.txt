@@ -1,0 +1,82 @@
+NEO4J
+
+Neo4J in 100 seconds - https://youtu.be/T6L9EoBy8Zk
+
+An ACID complain graph database that can handle the extremely complex relational data of the modern world
+Created in 2007 by Emil Eifrem, written in Java
+
+Traditional relational databases don't adapt to how humans think about relations of data
+Naturally we think about connections between entities
+
+Structure:
+Nodes represent entities
+Edges represent relations
+Properties are key value pairs that store data on these objects
+
+Properties of a node:
+{
+    name: 'bob',
+    age: 19,
+    strength: 23
+    ...
+}
+
+NEO4J is a true native graph database that aplies the graph model all way down to the storage level
+
+Queries are written in a language called cypher that resembles SQL
+
+Neo4J is used used in recomendation engines, social media platforms & knowledge graphs for artificial intelligence
+Can be used with Docker or Neo4jAuraDB in the cloud
+We can make queries with cypher
+
+
+
+
+
+
+CYPHER LANGUAGE
+
+SQL like language for querying but based with nodes and relations
+
+              NODE        RELATIONSHIP NODE
+       _________
+       
+       |_________   ___|__    _|__
+MATCH (:Human {name:"Bob"})-[:LOVES]->(whom) RETURN whom
+
+Sintax:
+
+Nodes surrounded by parenthesis ()
+Nodes connect to other nodes with arrows
+Relationships are in brackets []
+
+CREATE() - add data to the graph
+CREATE(:User) - label to group similar nodes
+CREATE(:User {name: "Pol Marin"}) - add properties to the node
+
+CREATE(:User {name: "Pol Marin"})-[:FOLLOWS] - Create relationship
+CREATE(:User {name: "Pol Marin"})-[:FOLLOWS]->(:User {name: "Adria Bedmar})
+Relational data is created :)
+
+There are no foreign keys, joins or migrations :)))
+
+We can create constraints
+
+CREATE (j:User {name: "@polmarin"})-[r:FOLLOWS]->(n:User {name: "adriabedmar"})
+CREATE CONSTRAINT ON (user:User) ASSERT user.name IS UNIQUE
+
+j, r, n will be local variables
+
+RETURN j, r, n #Returns json with properties of the variables
+
+We can visualize it as an interactive graph or even as a table
+
+Example Twitter:
+
+CREATE (:User {name: @pol })-[:SAYS]->(:Tweet {
+    text: "hola bona tarda",
+    created: date("2023-01-02")
+})
+# Creem la relació entre l'usuari i el tuit
+
+MATCH (u:User {name: "@polmarin"})->[:FOLLOWS]->(:User)
