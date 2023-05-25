@@ -65,10 +65,10 @@ def artist(artist_id, search_by = "id"):
                 artista = spotify.artist(artist_id)
                 save_artist(artista['name'])
                 return artista
-            except Exception as e:
+            except Exception as e:                          #Id invalida
                 print(e)
             
-    elif search_by in querying_properties:
+    elif search_by in querying_properties:                  # Searching by name
         if artist_id in artists: 
             id = get_artist(artist_id)['id']
             with open(PATH_DB_ARTISTS+id+".json",'r') as f:
@@ -88,7 +88,8 @@ def artist(artist_id, search_by = "id"):
 
 
 def get_artist_property(artist_id, property = "id", search_by = "id"):
-    return artist(artist_id,search_by=search_by)[property]
+    artista = artist(artist_id, search_by=search_by)
+    return artista[property]
 
 '''
 def get_artist_property(artist_id, property = "id", search_by = "id"):
@@ -130,10 +131,10 @@ def get_artist_property(artist_id, property = "id", search_by = "id"):
 
     
 def get_id(artist_id, search_by = "id"):
-    get_artist_property(artist_id, search_by=search_by)
+    return get_artist_property(artist_id, search_by=search_by)
 
 def get_uri(artist_id, search_by = "id"):
-    get_artist_property(artist_id, property="uri", search_by=search_by)
+    return get_artist_property(artist_id, property="uri", search_by=search_by)
 
 def get_photo_url(artist_id, search_by = "id"):
     images = get_artist_property(artist_id, "images", search_by=search_by)
@@ -159,6 +160,7 @@ print("Id no esta")
 print(get_artist_property("6olE6TJLqED3rqDCT0Fy4h"))
 '''
 
+print(get_top_ten_tracks("rosalia", search_by='name'))
 
 
 '''
