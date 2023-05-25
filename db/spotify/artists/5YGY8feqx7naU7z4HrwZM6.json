@@ -1,0 +1,35 @@
+{
+    "external_urls": {
+        "spotify": "https://open.spotify.com/artist/5YGY8feqx7naU7z4HrwZM6"
+    },
+    "followers": {
+        "href": null,
+        "total": 20798588
+    },
+    "genres": [
+        "pop"
+    ],
+    "href": "https://api.spotify.com/v1/artists/5YGY8feqx7naU7z4HrwZM6",
+    "id": "5YGY8feqx7naU7z4HrwZM6",
+    "images": [
+        {
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab6761610000e5eb7e8110a92ec2252f0821f8b8",
+            "width": 640
+        },
+        {
+            "height": 320,
+            "url": "https://i.scdn.co/image/ab676161000051747e8110a92ec2252f0821f8b8",
+            "width": 320
+        },
+        {
+            "height": 160,
+            "url": "https://i.scdn.co/image/ab6761610000f1787e8110a92ec2252f0821f8b8",
+            "width": 160
+        }
+    ],
+    "name": "Miley Cyrus",
+    "popularity": 88,
+    "type": "artist",
+    "uri": "spotify:artist:5YGY8feqx7naU7z4HrwZM6"
+}
