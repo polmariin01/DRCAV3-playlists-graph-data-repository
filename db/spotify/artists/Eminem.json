@@ -1,42 +1,37 @@
 {
     "external_urls": {
-        "spotify": "https://open.spotify.com/artist/6olE6TJLqED3rqDCT0FyPh"
+        "spotify": "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
     },
     "followers": {
         "href": null,
-        "total": 17590518
+        "total": 70916249
     },
     "genres": [
-        "grunge",
-        "permanent wave",
-        "rock"
+        "detroit hip hop",
+        "hip hop",
+        "rap"
     ],
-    "href": "https://api.spotify.com/v1/artists/6olE6TJLqED3rqDCT0FyPh",
-    "id": "6olE6TJLqED3rqDCT0FyPh",
+    "href": "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+    "id": "7dGJo4pcD2V6oG8kP0tJRR",
     "images": [
         {
-            "height": 1057,
-            "url": "https://i.scdn.co/image/84282c28d851a700132356381fcfbadc67ff498b",
-            "width": 1000
-        },
-        {
-            "height": 677,
-            "url": "https://i.scdn.co/image/a4e10b79a642e9891383448cbf37d7266a6883d6",
+            "height": 640,
+            "url": "https://i.scdn.co/image/ab6761610000e5eba00b11c129b27a88fc72f36b",
             "width": 640
         },
         {
-            "height": 211,
-            "url": "https://i.scdn.co/image/42ae0f180f16e2f21c1f2212717fc436f5b95451",
-            "width": 200
+            "height": 320,
+            "url": "https://i.scdn.co/image/ab67616100005174a00b11c129b27a88fc72f36b",
+            "width": 320
         },
         {
-            "height": 68,
-            "url": "https://i.scdn.co/image/e797ad36d56c3fc8fa06c6fe91263a15bf8391b8",
-            "width": 64
+            "height": 160,
+            "url": "https://i.scdn.co/image/ab6761610000f178a00b11c129b27a88fc72f36b",
+            "width": 160
         }
     ],
-    "name": "Nirvana",
-    "popularity": 81,
+    "name": "Eminem",
+    "popularity": 91,
     "type": "artist",
-    "uri": "spotify:artist:6olE6TJLqED3rqDCT0FyPh"
+    "uri": "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
 }

@@ -20,15 +20,16 @@ import sys
 
 def save_artist(spotify, artist_name='Nirvana', path="db/spotify/artists/"):
     with open(path+artist_name+".json", 'w') as f:
-        artist = get_artist(spotify=spotify, artist_name='Nirvana')
+        artist = get_artist(spotify=spotify, artist_name=artist_name)
         json.dump(artist,f, indent=4)
 
 
 spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials())
 
-#artists = ['Nirvana', 'Chick Corea','Rosalia','Quevedo','Queen','Bad Gyal','Martin Garrix','Eminem','ACDC', 'Gigi D\'Agostino', 'Snoop Dogg', 'Rosario', 'El Pony Pisador', 'Gabriel Fauré', 'Albert Pla', 'Avicii', 'El Payo Juan Manuel', 'ZOO', 'Britney Spears']
+artists = ['Nirvana', 'Chick Corea','Rosalia','Quevedo','Queen','Bad Gyal','Martin Garrix','Eminem','ACDC', 'Gigi D\'Agostino', 'Snoop Dogg', 'Rosario', 'El Pony Pisador', 'Gabriel Fauré', 'Albert Pla', 'Avicii', 'El Payo Juan Manuel', 'ZOO', 'Britney Spears']
 for artist in artists:
-    save_artist(spotify, artist_name=artist)
+   save_artist(spotify, artist_name=artist)
+   print("Created json for {artist}")
 
 
 #print(type(artist))

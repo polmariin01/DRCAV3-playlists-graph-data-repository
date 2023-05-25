@@ -1,42 +1,42 @@
 {
     "external_urls": {
-        "spotify": "https://open.spotify.com/artist/6olE6TJLqED3rqDCT0FyPh"
+        "spotify": "https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d"
     },
     "followers": {
         "href": null,
-        "total": 17590518
+        "total": 46716196
     },
     "genres": [
-        "grunge",
-        "permanent wave",
+        "classic rock",
+        "glam rock",
         "rock"
     ],
-    "href": "https://api.spotify.com/v1/artists/6olE6TJLqED3rqDCT0FyPh",
-    "id": "6olE6TJLqED3rqDCT0FyPh",
+    "href": "https://api.spotify.com/v1/artists/1dfeR4HaWDbWqFHLkxsg1d",
+    "id": "1dfeR4HaWDbWqFHLkxsg1d",
     "images": [
         {
-            "height": 1057,
-            "url": "https://i.scdn.co/image/84282c28d851a700132356381fcfbadc67ff498b",
-            "width": 1000
+            "height": 806,
+            "url": "https://i.scdn.co/image/b040846ceba13c3e9c125d68389491094e7f2982",
+            "width": 999
         },
         {
-            "height": 677,
-            "url": "https://i.scdn.co/image/a4e10b79a642e9891383448cbf37d7266a6883d6",
+            "height": 516,
+            "url": "https://i.scdn.co/image/af2b8e57f6d7b5d43a616bd1e27ba552cd8bfd42",
             "width": 640
         },
         {
-            "height": 211,
-            "url": "https://i.scdn.co/image/42ae0f180f16e2f21c1f2212717fc436f5b95451",
+            "height": 161,
+            "url": "https://i.scdn.co/image/c06971e9ff81696699b829484e3be165f4e64368",
             "width": 200
         },
         {
-            "height": 68,
-            "url": "https://i.scdn.co/image/e797ad36d56c3fc8fa06c6fe91263a15bf8391b8",
+            "height": 52,
+            "url": "https://i.scdn.co/image/6dd0ffd270903d1884edf9058c49f58b03db893d",
             "width": 64
         }
     ],
-    "name": "Nirvana",
-    "popularity": 81,
+    "name": "Queen",
+    "popularity": 85,
     "type": "artist",
-    "uri": "spotify:artist:6olE6TJLqED3rqDCT0FyPh"
+    "uri": "spotify:artist:1dfeR4HaWDbWqFHLkxsg1d"
 }

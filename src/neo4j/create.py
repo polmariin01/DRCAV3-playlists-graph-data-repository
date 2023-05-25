@@ -12,25 +12,18 @@ class App:
         # Don't forget to close the driver connection when you are finished with it
         self.driver.close()
 
-#CREATE CONSTRAINS
-    def create_constraints(self):
+
+    
+    def create_friendship(self, person1_name, person2_name):
         with self.driver.session(database="neo4j") as session:
             # Write transactions allow the driver to handle retries and transient errors
             result = session.execute_write(
-                self._create_constraints)
-            print("Created constraints")
+                self._create_and_return_friendship, person1_name, person2_name)
+            for record in result:
+                print("Created friendship between: {p1}, {p2}"
+                      .format(p1=record['p1'], p2=record['p2']))
 
-    @staticmethod
-    def _create_constraints(tx):
-        # Envia una Query a la base de dades i després retorna només un string amb el nom
-        query = (
-            "CREATE CONSTRAINT FOR (p:Playlist) REQUIRE p.name IS UNIQUE "
-            "CREATE CONSTRAINT FOR (s:Song) REQUIRE s.title IS UNIQUE"
-        )
-        tx.run(query)
-
-
-#CREATE PLAYLIST
+#CREAR PLAYLIST
     def create_playlist(self, playlist_name):
         with self.driver.session(database="neo4j") as session:
             # Write transactions allow the driver to handle retries and transient errors
@@ -41,59 +34,26 @@ class App:
 
     @staticmethod
     def _create_and_return_playlist(tx, playlist_name : str, properties : dict = {}):
-        # Envia una Query a la base de dades i després retorna només un string amb el nom
         query = (
             "CREATE (p:Playlist { name : $playlist_name})"
             "RETURN p"
         )
         result = tx.run(query, playlist_name=playlist_name)
-        #print(result)
         try:
             return [{"p": record["p"]["name"]}
                     for record in result]
-            return result #de moment no s'accedeix, es pot fer per a tornar el diccionari sencer 
-            return [{"p": record["p"]}
-                    for record in result] # De moment tampoc s'accedeix, podem possarho per tornar l'objecte p sencer
         # Capture any errors along with the query and data for traceability
         except Neo4jError as exception:
             logging.error("{query} raised an error: \n {exception}".format(
                 query=query, exception=exception))
             raise
 
-#CREATE SONG
-    def create_song(self, song_title):
-        with self.driver.session(database="neo4j") as session:
-            # Write transactions allow the driver to handle retries and transient errors
-            result = session.execute_write(
-                self._create_and_return_song, song_title)
-            for record in result:
-                print("Created song: {s}".format(s=record['s']))
-
-    @staticmethod
-    def _create_and_return_song(tx, song_title : str, properties : dict = {}):
-        # Envia una Query a la base de dades i després retorna només un string amb el nom
-        query = (
-            "CREATE (s:Song { title : $song_title})"
-            "RETURN s"
-        )
-        result = tx.run(query, song_title=song_title)
-        #print(result)
-        try:
-            return [{"s": record["s"]["title"]} for record in result]
-        # Capture any errors along with the query and data for traceability
-        except Neo4jError as exception:
-            logging.error("{query} raised an error: \n {exception}".format(
-                query=query, exception=exception))
-            raise
-
-#FICAR CANÇONS NOVES A PLAYLISTS
     @staticmethod
     def _create_and_return_track_in_playlist(tx, song_name, playlist_name):
         query = (
-            "CREATE (s:Song { title: $song_name})"          #CREA UNA CANÇÓ
-            "MATCH (p:Playlist { name: $playlist_name})"    #BUSCA UNA PLAYLIST EXISTENT
-            "CREATE (p)-[:CONTAINS]->(s)"                   #CREA UNA RELACIÓ AMB LA PLAYLIST I LA CANÇÓ
-            "RETURN p, s"                                   #RETORNA ELS DOS OBJECTES
+            "CREATE (s:Song { title: $song_name})"
+            "CREATE (p:Playlist { name: $playlist_name})"
+            "CREATE (s)"
         ) 
 
 
@@ -141,9 +101,7 @@ if __name__ == "__main__":
     user = "neo4j"
     password = "DRCAV1234"
     app = App(uri, user, password)
-    app.create_constraints()
     app.create_playlist("Musica para estudiar")
-    app.create_song("Titi me preguntó")
 #    app.create_friendship("Alice", "David")
 #    app.find_person("Alice")
     app.close()
