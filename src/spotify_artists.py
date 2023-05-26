@@ -88,8 +88,8 @@ def artist(artist_id, search_by = "id"):
 
 
 def get_artist_property(artist_id, property = "id", search_by = "id"):
-    artista = artist(artist_id, search_by=search_by)
-    return artista[property]
+    return artist(artist_id, search_by=search_by)[property]
+    
 
 '''
 def get_artist_property(artist_id, property = "id", search_by = "id"):
@@ -160,7 +160,7 @@ print("Id no esta")
 print(get_artist_property("6olE6TJLqED3rqDCT0Fy4h"))
 '''
 
-print(get_top_ten_tracks("rosalia", search_by='name'))
+#print(get_top_ten_tracks("rosalia", search_by='name'))
 
 
 '''

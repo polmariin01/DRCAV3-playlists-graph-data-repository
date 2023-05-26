@@ -79,4 +79,76 @@ CREATE (:User {name: @pol })-[:SAYS]->(:Tweet {
 })
 # Creem la relació entre l'usuari i el tuit
 
-MATCH (u:User {name: "@polmarin"})->[:FOLLOWS]->(:User)
+MATCH (u:User {name: "@polmarin"})->[:FOLLOWS]->(:User)--(t:Tweet)
+
+WHERE t.created > date("2023-01-01")
+
+RETURN t.text
+
+WHERE # can be more things,  filter
+
+For example:
+
+WHERE t.text ~= "(?i)Hi.*" #String patterns
+
+WHERE NOT (u)-[:MUTED]->(:User) #Only retrieve tweets from users that have not been muted
+
+
+Exemple Movies
+
+MATCH
+
+MATCH (a:Person {name:'Tom Hanks'}) RETUNR a
+# Return single node Person who was name Tom Hanks
+
+CREATE
+
+CREATE (a:Person {name: 'Brie Larson', born: 1989}) RETURN a
+CREATE (a:Movie {title:'Captain Marvel', released:2019, tagline:'Everything begins with a (her)o'}) RETURN about
+
+DELETE
+
+MATCH (a:Person {name: 'Brie Larson'}) DETACH DELETE a
+MATCH (a:Movie {title: 'Captain Marvel'}) DETACH DELETE a
+
+MERGE - Aviod duplicates
+
+MERGE (a:Person {name:'Brie Larson'})
+ON CREATE SET a.born = 1989
+ON MATCH SET a.stars = COALESCE(a.stars, 0)
+return a
+#Update a person named Brie Larson
+# ON CREATE branch to set values newly for created nodes
+# ON MATCH branch to update values for existing nodes
+
+MATCH together
+
+MATCH (a:Person {name:'Brie Larson'}), (b:Movie {title:'Captain Marvel'})
+MERGE (a)-[r:ACTED_IN]->(b) SET r.roles = ['Carol Danvers']
+RETURN a,r,b
+#Relaciona Person 'Brie Larson' amb Pelicula
+
+List comprehensions
+MATCH (a:Person {name:'Brie Larson'}), (b:Movie {title:'Captain Marvel'})
+MERGE (a)-[r:ACTED_IN]->(b) 
+SET r.roles = [x in r.roles WHERE x <> 'Captain Marvel'] + ['Captain Marvel']
+RETURN a,r,b
+
+WHERE
+
+MATCH (a:Person) WHERE a.name STARTS WITH 'Tom' RETURN a
+MATCH (a:Movie) WHERE a.released > 1990 AND a.released < 2000 RETURN a
+
+MATCH more
+
+List movies with Actor Tom Hanks
+MATCH (a:Person {name:'Tom Hanks'})-[:ACTED_IN]->(m:Movie) RETURN a,m
+
+Who directed the movie Cloud Atlas
+MATCH (m:Movie {title:'Cloud Atlas'})<-[:DIRECTED]-(d:Person) RETURN d
+
+Valuable results
+
+Co-actors of actor Tom Hanks, returns list of names
+MATCH (a:Person {name:'Tom Hanks'})-[:ACTED_IN]->(m)<-[:ACTED_IN]-(c) RETURN c.name
+
