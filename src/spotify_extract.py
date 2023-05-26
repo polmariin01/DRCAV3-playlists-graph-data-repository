@@ -3,18 +3,19 @@ from spotipy.oauth2 import SpotifyClientCredentials, SpotifyOAuth
 from neo4j import GraphDatabase
 import matplotlib.pyplot as plt
 import pandas as pd
+import credentials as c
 #import graphdatascience as gds
 
 # ------------------------------------ Configuration parameters ------------------------------------ #
-user_id = "USUARI SPOTIFY"                      # Spotify user ID.
-client = "CLIENT SPOTIFY"                     # Spotify client ID.
-secret = "SECRET SPOTIFY"                 # Spotify client secret.
-playlist_uri = "PLAYLIST"  # public playlist with songs to be sorted.
-neo4j_url = "neo4j://localhost:7687"                      # bolt url of the neo4j database.
-neo4j_username = "USUARI NEO4J"                # neo4j username. defaults to 'neo4j'.
-neo4j_password = "CONTRASENYA NEO4J"             # neo4j password.
+user_id = c.SPOTIFY_USER_ID                      # Spotify user ID.
+client = c.SPOTIFY_CLIENT_ID                     # Spotify client ID.
+secret = c.SPOTIFY_CLIENT_SECRET                 # Spotify client secret.
+playlist_uri = "PLAYLIST"                        # public playlist with songs to be sorted.
+neo4j_url = c.NEO4J_URL                          # bolt url of the neo4j database.
+neo4j_username = c.NEO4J_USERNAME                # neo4j username. defaults to 'neo4j'.
+neo4j_password = c.NEO4J_PASSWORD                # neo4j password.
 scope = 'playlist-modify-private'                                   # Spotify scope required to manage playlists.
-redirect_uri = 'http://localhost:3000'                     # Spotify callback url. Set to localhost for development.
+redirect_uri = c.SPOTIFY_REDIRECT_URL            # Spotify callback url. Set to localhost for development.
 cache_path = "spotify_cache.tmp"                                    # Where spotify caches the session variables.
 create_constraints = True                                 # Whether to create constraints.
 spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(client_id=client, client_secret=secret))
