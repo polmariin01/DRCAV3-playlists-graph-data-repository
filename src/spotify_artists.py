@@ -1,15 +1,19 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import json
-import os
 
 HOME_NAME="DRCAV3-playlists-network-data-repository"
-while os.getcwd().split('\\')[-1] != HOME_NAME:
-    #print(os.getcwd())
-    #print(os.path.dirname(os.getcwd()))
-    os.chdir("..")
+
 PATH_DB_SPOTIFY="db/spotify/"
 PATH_DB_ARTISTS=PATH_DB_SPOTIFY+"artists/"
+
+PATH_CODE="src/"
+
+def home():
+    while os.getcwd().split('\\')[-1] != HOME_NAME:
+        os.chdir("..")
+
+
 artists = ['Nirvana', 'Chick Corea','Rosalia','Quevedo','Queen','Bad Gyal','Martin Garrix','Eminem','ACDC', 'Gigi D\'Agostino', 'Snoop Dogg', 'Rosario', 'El Pony Pisador', 'Gabriel Fauré', 'Albert Pla', 'Avicii', 'El Payo Juan Manuel', 'ZOO', 'Britney Spears']
 spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials())
 querying_properties = ["id", "name"]

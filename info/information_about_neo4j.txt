@@ -55,15 +55,16 @@ CREATE(:User) - label to group similar nodes
 CREATE(:User {name: "Pol Marin"}) - add properties to the node
 
 CREATE(:User {name: "Pol Marin"})-[:FOLLOWS] - Create relationship
-CREATE(:User {name: "Pol Marin"})-[:FOLLOWS]->(:User {name: "Adria Bedmar})
+CREATE(:User {name: "Pol Marin", })-[:FOLLOWS]->(:User {name: "Adria Bedmar})
 Relational data is created :)
 
-There are no foreign keys, joins or migrations :)))
+There are no needs for foreign keys, joins or migrations :)))
 
 We can create constraints
 
-CREATE (j:User {name: "@polmarin"})-[r:FOLLOWS]->(n:User {name: "adriabedmar"})
+CREATE (j:User {name: "@polmarin"})-[r:FOLLOWS]->(n:User {name: "@adriabedmar"})
 CREATE CONSTRAINT ON (user:User) ASSERT user.name IS UNIQUE
+CREATE CONSTRAINT FOR (user:User) ASSERT user.name 
 
 j, r, n will be local variables
 
